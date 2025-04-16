@@ -2,7 +2,7 @@ workflows:
   build-android:
     name: Build Android APK
     environment:
-      node: 18.18.2
+      node: 20.11.1  # ✅ Use Node >= 20 for Capacitor 7
     scripts:
       - name: Install dependencies
         script: |
