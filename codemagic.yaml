@@ -7,14 +7,16 @@ workflows:
         PACKAGE_NAME: "com.proconect.sitesearch"
       node: 18.16.0
     scripts:
-      - name: Install Node dependencies
+      - name: Install dependencies
         script: |
           npm install
-      - name: Add and Sync Android Platform
+          npm install @capacitor/core @capacitor/cli @capacitor/android
+      - name: Ensure Android platform exists
         script: |
-          npm install @capacitor/android
-          npx cap add android || true
-          npx cap copy
+          if [ ! -d "android" ]; then
+            npx cap add android
+          fi
+          npx cap sync android
       - name: Build Android APK
         script: |
           cd android
