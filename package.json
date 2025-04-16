@@ -1,0 +1,21 @@
+{
+  "name": "site-search-app",
+  "version": "1.0.0",
+  "description": "Mobile site locator using Capacitor",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'No build step needed'",
+    "start": "npx cap serve",
+    "android": "npx cap open android",
+    "ios": "npx cap open ios",
+    "copy": "npx cap copy"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "^5.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.0.0"
+  }
+}
