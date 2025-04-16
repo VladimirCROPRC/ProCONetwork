@@ -2,8 +2,6 @@ workflows:
   build-android:
     name: Build Android APK
     environment:
-      vars:
-        CAPACITOR_ANDROID_STUDIO_PATH: /opt/android-studio
       node: 18.18.2
     scripts:
       - name: Install dependencies
@@ -11,8 +9,9 @@ workflows:
           npm install
       - name: Ensure Android platform exists
         script: |
-          chmod +x android/gradlew
-          npx cap sync android
+          echo "Fixing permissions and syncing Android platform"
+          chmod +x android/gradlew || true
+          npx --yes cap sync android
       - name: Build Android APK
         script: |
           cd android
