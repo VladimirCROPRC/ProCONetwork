@@ -7,11 +7,12 @@ workflows:
       - name: Install dependencies
         script: |
           npm install
+          npm install -g @capacitor/cli
       - name: Ensure Android platform exists
         script: |
           echo "Fixing permissions and syncing Android platform"
           chmod +x android/gradlew || true
-          npx --yes cap sync android
+          capacitor sync android
       - name: Build Android APK
         script: |
           cd android
