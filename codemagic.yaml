@@ -1,18 +1,20 @@
 workflows:
-  build-android:
-    name: Build Android APK
+  android-build:
+    name: Android Build
     environment:
-      node: 20.11.1  # ✅ Use Node >= 20 for Capacitor 7
+      node: 20.11.1
+      npm: 10.2.4
     scripts:
       - name: Install dependencies
         script: |
-          npm install
-          npm install -g @capacitor/cli
+          npm ci
+          npm install -D typescript
       - name: Ensure Android platform exists
         script: |
-          echo "Fixing permissions and syncing Android platform"
-          chmod +x android/gradlew || true
-          capacitor sync android
+          npx cap sync android
+      - name: Build web assets
+        script: |
+          npm run build
       - name: Build Android APK
         script: |
           cd android
