@@ -2,9 +2,9 @@ workflows:
   build-android:
     name: Build Android APK
     environment:
+      vars:
+        CAPACITOR_ANDROID_STUDIO_PATH: /opt/android-studio
       node: 18.18.2
-      npm: 9.8.1
-      android: true
     scripts:
       - name: Install dependencies
         script: |
