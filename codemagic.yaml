@@ -1,21 +1,17 @@
 workflows:
-  site_search_app:
-    name: Site Search Android Build
-    max_build_duration: 15
+  build-android:
+    name: Build Android APK
     environment:
-      vars:
-        PACKAGE_NAME: "com.proconect.sitesearch"
-      node: 18.16.0
+      node: 18.18.2
+      npm: 9.8.1
+      android: true
     scripts:
       - name: Install dependencies
         script: |
           npm install
-          npm install @capacitor/core @capacitor/cli @capacitor/android
       - name: Ensure Android platform exists
         script: |
-          if [ ! -d "android" ]; then
-            npx cap add android
-          fi
+          chmod +x android/gradlew
           npx cap sync android
       - name: Build Android APK
         script: |
